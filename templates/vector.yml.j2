@@ -7,7 +7,7 @@ sinks:
   to_clickhouse:
     type: "clickhouse"
     inputs: ["system_logs"]
-    endpoint: "http://{{ hostvars['clickhouse_node']['ansible_host'] }}:8123"
+    endpoint: "http://{{ hostvars['clickhouse_node']['ansible_host'] | default('localhost') }}:8123"
     database: "logs"
     table: "system_logs"
     compression: "gzip"
